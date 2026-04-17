@@ -1,5 +1,9 @@
-import SSOTAuditClientWrapper from './client-wrapper';
+'use client';
+
+import dynamic from 'next/dynamic';
+
+const SSOTAuditContent = dynamic(() => import('./content'), { ssr: false });
 
 export default function SSOTAuditPage() {
-  return <SSOTAuditClientWrapper />;
+  return <SSOTAuditContent />;
 }
