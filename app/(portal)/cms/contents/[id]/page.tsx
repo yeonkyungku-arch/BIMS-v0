@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -99,7 +99,7 @@ function StatusBadge({ status, size = "default" }: { status: UnifiedContentStatu
 // =============================================================================
 // Main Page
 // =============================================================================
-export default function ContentDetailPage() {
+function ContentDetailContent() {
   const router = useRouter();
   const params = useParams();
   const searchParams = useSearchParams();
@@ -546,4 +546,8 @@ export default function ContentDetailPage() {
       </AlertDialog>
     </div>
   );
+}
+
+export default function ContentDetailPage() {
+  return <Suspense><ContentDetailContent /></Suspense>;
 }

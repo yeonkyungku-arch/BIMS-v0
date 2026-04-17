@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import { getCmsProvider } from "@/lib/cms/provider/cms-provider.factory";
 import type { CmsDisplayViewModelV1 } from "@/contracts/cms/viewmodel";
@@ -25,7 +25,7 @@ import {
  * If displayState=LOW_POWER is provided, it is normalized:
  *   displayState -> NORMAL, socLevel -> LOW_POWER
  */
-export default function CmsDisplayPage() {
+function CmsDisplayContent() {
   const { deviceId } = useParams<{ deviceId: string }>();
   const searchParams = useSearchParams();
   const [provider] = useState(() => getCmsProvider());
@@ -172,4 +172,8 @@ export default function CmsDisplayPage() {
       )}
     </DisplayFrame>
   );
+}
+
+export default function CmsDisplayPage() {
+  return <Suspense><CmsDisplayContent /></Suspense>;
 }

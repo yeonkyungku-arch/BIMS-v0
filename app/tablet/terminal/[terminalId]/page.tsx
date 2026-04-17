@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useSyncExternalStore } from "react";
+import { useState, useMemo, useSyncExternalStore, Suspense } from "react";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
 import {
   mockBisTerminals,
@@ -61,7 +61,7 @@ const INCIDENT_BADGE_STYLE: Record<Exclude<IncidentStatus, "NONE">, string> = {
   COMPLETED: "bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-800",
 };
 
-export default function TerminalDetailPage() {
+function TerminalDetailContent() {
   const { terminalId } = useParams<{ terminalId: string }>();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -772,4 +772,8 @@ function DetailField({
       </p>
     </div>
   );
+}
+
+export default function TerminalDetailPage() {
+  return <Suspense><TerminalDetailContent /></Suspense>;
 }
