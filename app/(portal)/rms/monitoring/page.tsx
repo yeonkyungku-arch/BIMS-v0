@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { AlertTriangle, Activity, Zap, Wifi, Clock, ChevronRight, Search, Filter } from "lucide-react";
+import { AlertTriangle, Activity, Zap, Wifi, Clock, ChevronRight, Search, Filter, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
