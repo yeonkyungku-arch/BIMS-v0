@@ -171,6 +171,14 @@ export default function RMSMonitoringPage() {
     EMERGENCY: "긴급",
   };
 
+  const statusColorMap: Record<string, string> = {
+    NORMAL: "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300",
+    DEGRADED: "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300",
+    CRITICAL: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300",
+    OFFLINE: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
+    EMERGENCY: "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300",
+  };
+
   // ──────────────────────────────────────────────────
   // Render Immediate Response Item
   // ──────────────────────────────────────────────────
