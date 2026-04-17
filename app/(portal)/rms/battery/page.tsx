@@ -64,12 +64,6 @@ interface BatteryDeviceView {
 // Helper Functions
 // =============================================================================
 
-function getBatteryStatus(soc: number, health: number): BatteryStatus {
-  if (soc < 30 || health < 60) return "CRITICAL";
-  if (soc < 60 || health < 80) return "WARNING";
-  return "NORMAL";
-}
-
 function getReplacementRisk(health: number, cycles: number): ReplacementRisk {
   if (health < 60 || cycles > 800) return "HIGH";
   if (health < 80 || cycles > 500) return "MEDIUM";

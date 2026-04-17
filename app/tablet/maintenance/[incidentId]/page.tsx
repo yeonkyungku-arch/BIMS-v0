@@ -188,7 +188,7 @@ export default function MaintenanceRecordPage() {
 
     // Push to outbox queue (OutboxItemContract 완전형)
     const obxId = `OBX-${incident.incidentId}`;
-    const now = new Date().toISOString();
+    const nowIso = new Date().toISOString();
     pushOutboxItem({
       id: obxId,
       type: "MAINTENANCE",
@@ -196,10 +196,10 @@ export default function MaintenanceRecordPage() {
       businessKey: incident.incidentId,
       idempotencyKey: buildIdempotencyKey("MAINTENANCE", obxId, incident.incidentId),
       createdAt: actionCompletedAt,
-      updatedAt: now,
+      updatedAt: nowIso,
       transmissionStatus: "QUEUED",
       retry: { count: 0, max: 5 },
-      network: { state: "ONLINE", observedAt: now },
+      network: { state: "ONLINE", observedAt: nowIso },
       stage: { local: "NONE", transmission: "PENDING", approval: "UNKNOWN" },
       refs: {
         deviceId: incident.terminalId,
